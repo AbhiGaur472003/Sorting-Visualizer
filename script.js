@@ -54,6 +54,10 @@ function init(){
 }
 
 function play(){
+    document.getElementById("init").disabled = true;
+    document.getElementById("sizerange").disabled = true;
+    document.getElementById("speedrange").disabled = true;
+    document.getElementById("play").disabled = true;
     const copy=[...array]
     var moves=1;
     if(algo==="Bubble Sort"){
@@ -68,7 +72,13 @@ function play(){
         moves=quickSort(copy);
     }
     
-    animate(moves);
+    animate(moves , function(){
+        document.getElementById("init").disabled = false;
+        document.getElementById("sizerange").disabled = false;
+        document.getElementById("speedrange").disabled = false;
+        document.getElementById("play").disabled = false;
+    });
+
 }
 
 function animate(moves){
