@@ -81,13 +81,14 @@ function play(){
 
 }
 
-function animate(moves){
+
+function animate(moves , callback){
     if(moves.length==0){
         showBars();
         if (typeof callback === 'function') {
             callback();
         }
-        return ;
+        return;
     }
     const move=moves.shift();
     const [i,j]=move.indices;
@@ -101,7 +102,7 @@ function animate(moves){
 
     showBars(move);
     setTimeout(function(){
-        animate(moves);
+        animate(moves , callback);
     },speed);
 }
 
@@ -119,6 +120,7 @@ function bubbleSort(array){
             }
         }
     }while(swapped);
+
     return moves;
 }
 
@@ -249,3 +251,4 @@ function showBars(move){
     }
     
 }
+
