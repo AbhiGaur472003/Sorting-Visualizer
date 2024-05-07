@@ -84,6 +84,9 @@ function play(){
 function animate(moves){
     if(moves.length==0){
         showBars();
+        if (typeof callback === 'function') {
+            callback();
+        }
         return ;
     }
     const move=moves.shift();
